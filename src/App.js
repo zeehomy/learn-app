@@ -16,7 +16,6 @@ class App extends Component {
         { id: '5', name: 'Vestibulum at eros' },
       ]
     };
-    
   }
   
   render() {
