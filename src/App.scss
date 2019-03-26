@@ -1,5 +1,31 @@
-.app {
-  h1 {
-    color: red;
+body {
+  padding: 20px;
+}
+
+.items-tabs-panel {
+  li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.active {
+  border: 1px solid red;
+}
+
+.tabs-panel {
+  .buttons {
+    div {
+      display: inline-block;
+      padding: 6px 10px;
+      cursor: pointer;
+    }
+  }
+  span {
+    display: inline-block;
+    width: 200px;
+    padding: 6px 10px;
+    border: 1px solid blue;
   }
 }
