@@ -14,7 +14,7 @@ class Tabs extends Component {
 	}
 
 	render() {
-		let tabs = this.state.tabs;
+		const tabs = this.state.tabs;
 		return (
 			<div className="tabs-panel">
 				<div className="buttons">
