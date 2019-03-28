@@ -9,21 +9,25 @@ class Tabs extends Component {
       // 尝试将当前选中态使用单纯的state来表示是不是会更简单？
       // 比如 selectIndex, 默认为0
 			tabs: [
-				{ id: 1, name: 'Item A', isActive: true},
-				{ id: 2, name: 'Item B', isActive: false},
-				{ id: 3, name: 'Item C', isActive: false}
-			]
+				{ id: 1, name: 'Item A'},
+				{ id: 2, name: 'Item B'},
+				{ id: 3, name: 'Item C'}
+			],
+			selectIndex: 0
 		};
 	}
 
 	render() {
 		const tabs = this.state.tabs;
+		const selectIndex = this.state.selectIndex;
 		return (
 			<div className="tabs-panel">
 				<div className="buttons">
 					{
 						tabs.map((item, index) => (
-							<div key={item.id} className={item.isActive && 'active'} onClick={() => this.clickTab(index)}>
+							<div key={item.id}
+								className={index === selectIndex ? 'active' : null}
+								onClick={() => this.clickTab(index)}>
 								{item.name}
 							</div>
 						))
@@ -31,7 +35,7 @@ class Tabs extends Component {
 				</div>
 				<span>
 					{
-						tabs.find((item) => item.isActive).name
+						tabs.find((item, index) => index === selectIndex).name
 					}
 				</span>
 			</div>
@@ -39,9 +43,9 @@ class Tabs extends Component {
 	}
 
 	clickTab(index) {
-		let tabs = this.state.tabs;
-		tabs.map((item) => item.isActive = false);
-		tabs[index].isActive = true;
+		// let tabs = this.state.tabs;
+		// tabs.map((item) => item.isActive = false);
+		// tabs[index].isActive = true;
     /*
     上面语句的执行结果没有问题
     一般来说，我们用map方法是使用其返回值的，比如
@@ -62,9 +66,9 @@ class Tabs extends Component {
     针对于Tabs这个场景，用独立的一个字段代表选中索引会更加方便
     不需要在每个数据项中 记录是否选中， 除非多选场景，否则多个 isActive 是一种“重复”
     而重复在软件开发中需要避免。
-    */
+		*/
 		this.setState({
-			tabs: tabs
+			selectIndex: index
 		});
 	}
 }
